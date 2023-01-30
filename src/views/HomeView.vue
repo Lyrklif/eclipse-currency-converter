@@ -17,7 +17,7 @@ const store = useCurrenciesStore();
     </thead>
 
     <tbody>
-      <tr v-for="(value, key) in store.currencyList" :key="key">
+      <tr v-for="(value, key) in store.exchangeRates" :key="key">
         <td>{{ value.CharCode }}</td>
         <td>{{ value.Nominal }}</td>
         <td>{{ value.Name }}</td>
