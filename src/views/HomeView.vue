@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import CurrencyChanger from "../components/features/CurrencyChanger.vue";
-import SearchCurrency from "../components/features/SearchCurrency.vue";
-import ExchangeRates from "../components/features/rates/ExchangeRates.vue";
+import CurrencyChanger from "../components/features/exchange/CurrencyChanger.vue";
+import SearchCurrency from "../components/features/exchange/SearchCurrency.vue";
+import ExchangeRates from "../components/features/exchange/ExchangeRates.vue";
 import LoadingAlert from "../components/features/alert/LoadingAlert.vue";
 import FetchAlert from "../components/features/alert/FetchAlert.vue";
 import { useCurrenciesStore } from "../stores/currencies";

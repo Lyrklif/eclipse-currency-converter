@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useExchangesStore } from "../../stores/exchanges";
-import { useCurrenciesStore } from "../../stores/currencies";
-import BaseSelect from "../base/BaseSelect.vue";
+import { useExchangesStore } from "../../../stores/exchanges";
+import { useCurrenciesStore } from "../../../stores/currencies";
+import BaseSelect from "../../base/BaseSelect.vue";
 import { storeToRefs } from "pinia";
 
 const exchangesStore = useExchangesStore();

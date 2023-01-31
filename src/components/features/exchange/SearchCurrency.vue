@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useSearchStore } from "../../stores/search";
-import BaseInput from "../base/BaseInput.vue";
+import { useSearchStore } from "../../../stores/search";
+import BaseInput from "../../base/BaseInput.vue";
 import { storeToRefs } from "pinia";
 
 const store = useSearchStore();

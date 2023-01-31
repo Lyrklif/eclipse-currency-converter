@@ -11,7 +11,7 @@ const store = useExchangesStore();
       <tr>
         <th class="head-cell">Код</th>
         <th class="head-cell price">Цена ({{ store.currentCurrency }})</th>
-        <th class="head-cell">Номинал</th>
+        <th class="head-cell">Единиц</th>
         <th class="head-cell">Название</th>
       </tr>
     </thead>
