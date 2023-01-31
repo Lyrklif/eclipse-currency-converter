@@ -21,6 +21,7 @@
     "axios": "^1.2.1",
     "gh-pages": "^4.0.0",
     "money": "^0.2.0",
+    "normalize.css": "^8.0.1",
     "pinia": "^2.0.26",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-recommended-vue": "^1.4.0",
