@@ -24,9 +24,20 @@ const changeHandler = (e: any) => {
 </script>
 
 <template>
-  <select v-model="selected" :value="value" @change="changeHandler">
+  <select
+    v-model="selected"
+    :value="value"
+    @change="changeHandler"
+    class="select"
+  >
     <option v-for="name in options" :key="`select-${name}`" :value="name">
       {{ name }}
     </option>
   </select>
 </template>
+
+<style scoped lang="scss">
+.select {
+  padding: 0.5rem;
+}
+</style>

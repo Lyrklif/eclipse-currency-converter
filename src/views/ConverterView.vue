@@ -1,45 +1,29 @@
 <script lang="ts" setup>
-import { useConverterStore } from "../stores/converter";
+import { ref } from "vue";
 import { useCurrenciesStore } from "../stores/currencies";
-import BaseSelect from "../components/features/BaseSelect.vue";
-import { storeToRefs } from "pinia";
+import LoadingAlert from "../components/features/alert/LoadingAlert.vue";
+import FetchAlert from "../components/features/alert/FetchAlert.vue";
+import CurrencyConverter from "../components/features/CurrencyConverter.vue";
 
-const convertStore = useConverterStore();
+const isLoading = ref<boolean>(true);
+const isError = ref<boolean>(false);
+
 const currenciesStore = useCurrenciesStore();
-const { baseValue } = storeToRefs(convertStore);
 
-const changeValue = (e: any) => {
-  convertStore.setBaseValue(e.target.value);
-};
+currenciesStore
+  .loadRates()
+  .catch(() => {
+    isError.value = true;
+  })
+  .finally(() => {
+    isLoading.value = false;
+  });
 </script>
 
 <template>
   <main>
-    <input
-      type="number"
-      inputmode="numeric"
-      v-model.number="baseValue"
-      @input="changeValue"
-      min="0"
-    />
-    <BaseSelect
-      :value="convertStore.from"
-      :options="currenciesStore.currencyList"
-      @change="convertStore.setFrom"
-    />
-
-    <button @click="convertStore.switchCurrencies">{{ "<=>" }}</button>
-
-    <input
-      type="number"
-      inputmode="numeric"
-      disabled
-      v-model.number="convertStore.calculateValue"
-    />
-    <BaseSelect
-      :value="convertStore.to"
-      :options="currenciesStore.currencyList"
-      @change="convertStore.setTo"
-    />
+    <LoadingAlert v-if="isLoading" />
+    <FetchAlert v-else-if="isError" />
+    <CurrencyConverter v-else />
   </main>
 </template>

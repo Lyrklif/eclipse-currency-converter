@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useCurrenciesStore } from "../../stores/currencies";
+import BaseInput from "../base/BaseInput.vue";
+import { storeToRefs } from "pinia";
 
 const store = useCurrenciesStore();
-const value = ref(store.searchName);
+const { searchName } = storeToRefs(store);
 
-const changeHandler = (): void => {
-  store.setSearchName(value.value);
+const changeHandler = (value: string): void => {
+  store.setSearchName(value);
 };
 </script>
 
 <template>
-  <input
-    v-model.trim="value"
+  <BaseInput
     @input="changeHandler"
+    :value="searchName"
     placeholder="Поиск валюты"
+    type="search"
   />
 </template>

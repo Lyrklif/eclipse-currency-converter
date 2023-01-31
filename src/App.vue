@@ -1,33 +1,34 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { RouterView } from "vue-router";
-import AppHeader from "./components/layout/header/AppHeader.vue";
-import AppFooter from "./components/layout/footer/AppFooter.vue";
-import { useCurrenciesStore } from "./stores/currencies";
-
-const store = useCurrenciesStore();
-const isLoading = ref<boolean>(true);
-const isError = ref<boolean>(false);
-
-Promise.all([store.loadCurrencies(), store.loadRates()])
-  .catch(() => {
-    isError.value = true;
-  })
-  .finally(() => {
-    isLoading.value = false;
-  });
+import AppHeader from "./components/layout/AppHeader.vue";
+import AppFooter from "./components/layout/AppFooter.vue";
 </script>
 
 <template>
-  <div>
-    <AppHeader />
-
-    <p v-if="isLoading">Loading...</p>
-    <p v-else-if="isError">
-      Не удалось загрузить данные. Попробуйте ещё раз через некоторое время
-    </p>
-    <RouterView v-else />
-
-    <AppFooter />
+  <div class="wrap">
+    <AppHeader class="app-header" />
+    <RouterView />
+    <AppFooter class="app-footer" />
   </div>
 </template>
+
+<style scoped lang="scss">
+.wrap {
+  width: 100%;
+  max-width: max(80vw, 300px);
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.app-header {
+  margin-bottom: 3rem;
+}
+
+.app-footer {
+  margin-top: 3rem;
+}
+</style>

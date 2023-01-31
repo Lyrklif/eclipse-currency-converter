@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import ValueCell from "./ValueCell.vue";
-import { useCurrenciesStore } from "../../stores/currencies";
+import PriceCell from "./PriceCell.vue";
+import { useCurrenciesStore } from "../../../stores/currencies";
 
 const store = useCurrenciesStore();
 </script>
@@ -25,7 +25,7 @@ const store = useCurrenciesStore();
         <td class="cell">
           <b>{{ value.CharCode }}</b>
         </td>
-        <ValueCell
+        <PriceCell
           :current="value.Value"
           :previous="value.Previous"
           class="cell price"
@@ -46,7 +46,7 @@ const store = useCurrenciesStore();
   border-top: 1px solid lightgray;
 }
 .cell {
-  padding: 0.5rem 0.2rem;
+  padding: 0.5rem 0.1rem;
 }
 
 .nominal {

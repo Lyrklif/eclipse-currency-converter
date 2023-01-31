@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useCurrenciesStore } from "../../stores/currencies";
+import BaseSelect from "../base/BaseSelect.vue";
+import { storeToRefs } from "pinia";
 
 const store = useCurrenciesStore();
-const currency = ref(store.currentCurrency);
+const { currentCurrency } = storeToRefs(store);
 
-const changeHandler = (): void => {
-  store.setCurrentCurrency(currency.value);
+const changeHandler = (value: string): void => {
+  store.setCurrentCurrency(value);
 };
 </script>
 
 <template>
-  <select v-model="currency" @change="changeHandler">
-    <option
-      v-for="name in store.currencyList"
-      :key="`currency-${name}`"
-      :value="name"
-    >
-      {{ name }}
-    </option>
-  </select>
+  <BaseSelect
+    :value="currentCurrency"
+    :options="store.currencyList"
+    @change="changeHandler"
+  />
 </template>

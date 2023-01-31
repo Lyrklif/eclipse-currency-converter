@@ -3,10 +3,8 @@ import type { RemovableRef } from "@vueuse/core";
 import { ref, computed } from "vue";
 import fx from "money";
 
-const START_VALUE = 0;
-
 export interface StoreInterface {
-  baseValue: RemovableRef<number>;
+  baseValue: RemovableRef<number | undefined>;
   calculateValue: RemovableRef<number>;
   from: RemovableRef<string>;
   to: RemovableRef<string>;
@@ -19,7 +17,7 @@ export interface StoreInterface {
 export const useConverterStore = defineStore(
   "converter",
   (): StoreInterface => {
-    const baseValue = ref<number>(START_VALUE);
+    const baseValue = ref<number>();
     const from = ref<string>("RUB");
     const to = ref<string>("USD");
 
