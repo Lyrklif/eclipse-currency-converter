@@ -5,6 +5,7 @@ import fx from "money";
 import API from "../api/index";
 import type { ExchangeInterface } from "../api/types";
 import { useSearchStore } from "./search";
+import { BASE_CURRENCY } from "../constants";
 
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
@@ -16,7 +17,7 @@ export interface StoreInterface {
 export const useExchangesStore = defineStore(
   "exchanges",
   (): StoreInterface => {
-    const currentCurrency = ref("RUB");
+    const currentCurrency = ref(BASE_CURRENCY);
     const exchangeRates = ref<Array<ExchangeInterface>>([]);
     const searchStore = useSearchStore();
 

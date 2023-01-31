@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import type { RemovableRef } from "@vueuse/core";
 import { ref, computed } from "vue";
 import fx from "money";
+import { BASE_CURRENCY, DEFAULT_CONVERT_CURRENCY } from "../constants";
 
 export interface StoreInterface {
   baseValue: RemovableRef<number | undefined>;
@@ -18,8 +19,8 @@ export const useConverterStore = defineStore(
   "converter",
   (): StoreInterface => {
     const baseValue = ref<number>();
-    const from = ref<string>("RUB");
-    const to = ref<string>("USD");
+    const from = ref<string>(BASE_CURRENCY);
+    const to = ref<string>(DEFAULT_CONVERT_CURRENCY);
 
     const calculateValue = computed(() => {
       if (!baseValue.value) return 0;
