@@ -18,7 +18,7 @@ const store = useExchangesStore();
 
     <tbody>
       <tr
-        v-for="value in store.filteredExchangeRates"
+        v-for="value in store.filteredExchanges"
         :key="value.CharCode"
         class="row"
       >

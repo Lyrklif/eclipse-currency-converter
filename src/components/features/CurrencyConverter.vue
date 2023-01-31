@@ -28,7 +28,7 @@ const changeValue = (value: string) => {
 
       <BaseSelect
         :value="convertStore.from"
-        :options="currenciesStore.currencyList"
+        :options="currenciesStore.currencyKeys"
         @change="convertStore.setFrom"
       />
     </div>
@@ -48,7 +48,7 @@ const changeValue = (value: string) => {
 
       <BaseSelect
         :value="convertStore.to"
-        :options="currenciesStore.currencyList"
+        :options="currenciesStore.currencyKeys"
         @change="convertStore.setTo"
       />
     </div>

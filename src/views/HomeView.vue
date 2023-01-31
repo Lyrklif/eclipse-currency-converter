@@ -13,7 +13,7 @@ const exchangesStore = useExchangesStore();
 const isLoading = ref<boolean>(true);
 const isError = ref<boolean>(false);
 
-Promise.all([exchangesStore.loadCurrencies(), store.loadRates()])
+Promise.all([exchangesStore.loadExchanges(), store.loadRates()])
   .catch(() => {
     isError.value = true;
   })

@@ -8,8 +8,8 @@ import { useSearchStore } from "./search";
 
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
-  loadCurrencies: () => Promise<void>;
-  filteredExchangeRates: RemovableRef<Array<ExchangeInterface>>;
+  loadExchanges: () => Promise<void>;
+  filteredExchanges: RemovableRef<Array<ExchangeInterface>>;
   setCurrentCurrency: (value: string) => void;
 }
 
@@ -20,7 +20,7 @@ export const useExchangesStore = defineStore(
     const exchangeRates = ref<Array<ExchangeInterface>>([]);
     const searchStore = useSearchStore();
 
-    const filteredExchangeRates = computed(() => {
+    const filteredExchanges = computed(() => {
       const name = searchStore.searchName.toLowerCase();
 
       return exchangeRates.value.filter((item) => {
@@ -44,7 +44,7 @@ export const useExchangesStore = defineStore(
       });
     }
 
-    async function loadCurrencies() {
+    async function loadExchanges() {
       API.exchanges()
         .then((data) => {
           exchangeRates.value = Object.values(data.data.Valute);
@@ -56,9 +56,9 @@ export const useExchangesStore = defineStore(
 
     return {
       currentCurrency,
-      filteredExchangeRates,
+      filteredExchanges,
       setCurrentCurrency,
-      loadCurrencies,
+      loadExchanges,
     };
   }
 );

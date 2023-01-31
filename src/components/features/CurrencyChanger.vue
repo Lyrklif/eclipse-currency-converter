@@ -16,7 +16,7 @@ const changeHandler = (value: string): void => {
 <template>
   <BaseSelect
     :value="currentCurrency"
-    :options="currenciesStore.currencyList"
+    :options="currenciesStore.currencyKeys"
     @change="changeHandler"
   />
 </template>
