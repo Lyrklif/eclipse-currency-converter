@@ -23,10 +23,10 @@ const isLow = computed(() => {
         high: isHigh,
         low: isLow,
       }"
-      >{{ isHigh ? "▲" : isLow ? "▼" : "" }} {{ current }}</b
+      >{{ isHigh ? "▼" : isLow ? "▲" : "" }} {{ current }}</b
     >
     <small class="price">
-      {{ isHigh ? "+" : isLow ? "-" : "" }}
+      {{ isHigh ? "-" : isLow ? "+" : "" }}
       {{ $filters.number(Math.abs(current - previous)) }}
     </small>
   </td>
