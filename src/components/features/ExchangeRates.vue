@@ -17,7 +17,11 @@ const store = useCurrenciesStore();
     </thead>
 
     <tbody>
-      <tr v-for="(value, key) in store.exchangeRates" :key="key" class="row">
+      <tr
+        v-for="value in store.filteredExchangeRates"
+        :key="value.CharCode"
+        class="row"
+      >
         <td class="cell">
           <b>{{ value.CharCode }}</b>
         </td>
