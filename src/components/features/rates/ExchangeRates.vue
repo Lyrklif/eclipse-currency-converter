@@ -7,12 +7,12 @@ const store = useCurrenciesStore();
 
 <template>
   <table class="table">
-    <thead>
+    <thead class="thead">
       <tr>
-        <th>Код</th>
-        <th class="price">Цена ({{ store.currentCurrency }})</th>
-        <th>Номинал</th>
-        <th>Название</th>
+        <th class="head-cell">Код</th>
+        <th class="head-cell price">Цена ({{ store.currentCurrency }})</th>
+        <th class="head-cell">Номинал</th>
+        <th class="head-cell">Название</th>
       </tr>
     </thead>
 
@@ -42,6 +42,20 @@ const store = useCurrenciesStore();
   border-collapse: collapse;
   width: 100%;
 }
+
+.thead {
+  position: sticky;
+  top: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.head-cell {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: beige;
+}
+
 .row {
   border-top: 1px solid lightgray;
 }
