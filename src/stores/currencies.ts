@@ -5,7 +5,7 @@ import { ref } from "vue";
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
   currencyList: RemovableRef<Array<any>>;
-  exchangeRates: RemovableRef<Array<string>>;
+  exchangeRates: RemovableRef<any>;
   setCurrentCurrency: (value: string) => void;
   setCurrencyVariants: (list: Array<string>) => void;
   setExchangeRates: (list: Array<any>) => void;
@@ -18,18 +18,35 @@ export const useCurrenciesStore = defineStore(
   (): StoreInterface => {
     const currentCurrency = ref("");
     const currencyList = ref<Array<any>>([]);
-    const exchangeRates = ref<Array<string>>([]);
+    const exchangeRates = ref<any>({});
 
     function setCurrencyVariants(list: Array<string> = []): void {
       currencyList.value = list;
     }
 
-    function setExchangeRates(list: Array<any> = []): void {
-      exchangeRates.value = list;
+    function setExchangeRates(value: any): void {
+      exchangeRates.value = value;
     }
 
-    function setCurrentCurrency(value: string): void {
-      currentCurrency.value = value;
+    function setCurrentCurrency(currency: string): void {
+      const oldCurrency = currentCurrency.value;
+      currentCurrency.value = currency;
+
+      currencyList.value.forEach((key) => {
+        const value = exchangeRates.value[key].Value;
+        const previous = exchangeRates.value[key].Previous;
+
+        // @ts-ignore
+        const newValue = window.fx(value).from(oldCurrency).to(currency);
+        // @ts-ignore
+        const newPrevious = window.fx(previous).from(oldCurrency).to(currency);
+
+        exchangeRates.value[key] = {
+          ...exchangeRates.value[key],
+          Value: newValue,
+          Previous: newPrevious,
+        };
+      });
     }
 
     async function loadCurrencies(): Promise<void> {
