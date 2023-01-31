@@ -98,12 +98,12 @@ export const useCurrenciesStore = defineStore(
       currencyList,
       exchangeRates,
       filteredExchangeRates,
+      searchName,
       setCurrencyVariants,
       setExchangeRates,
       setCurrentCurrency,
       loadCurrencies,
       loadRates,
-      searchName,
       setSearchName,
       resetSearchName,
     };
