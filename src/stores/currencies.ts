@@ -26,7 +26,7 @@ export const useCurrenciesStore = defineStore(
     const exchangeRates = ref<Array<any>>([]);
 
     const filteredExchangeRates = computed(() => {
-      const name = searchName.value.toLowerCase(); // TODO
+      const name = searchName.value.toLowerCase();
 
       return exchangeRates.value.filter((item) => {
         return (
