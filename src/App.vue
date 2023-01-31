@@ -7,7 +7,7 @@ import AppFooter from "./components/layout/AppFooter.vue";
 <template>
   <div class="wrap">
     <AppHeader class="app-header" />
-    <RouterView />
+    <RouterView class="content" />
     <AppFooter class="app-footer" />
   </div>
 </template>
@@ -20,7 +20,6 @@ import AppFooter from "./components/layout/AppFooter.vue";
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100vh;
 }
 
@@ -28,7 +27,11 @@ import AppFooter from "./components/layout/AppFooter.vue";
   margin-bottom: 3rem;
 }
 
+.content {
+  margin-bottom: 3rem;
+}
+
 .app-footer {
-  margin-top: 3rem;
+  margin-top: auto;
 }
 </style>
