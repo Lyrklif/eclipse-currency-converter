@@ -5,7 +5,7 @@ import fx from "money";
 
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
-  currencyList: RemovableRef<Array<any>>;
+  currencyList: RemovableRef<Array<string>>;
   exchangeRates: RemovableRef<Array<any>>;
   filteredExchangeRates: RemovableRef<Array<any>>;
   setCurrentCurrency: (value: string) => void;
@@ -23,7 +23,7 @@ export const useCurrenciesStore = defineStore(
   (): StoreInterface => {
     const currentCurrency = ref("");
     const searchName = ref("");
-    const currencyList = ref<Array<any>>([]);
+    const currencyList = ref<Array<string>>([]);
     const exchangeRates = ref<Array<any>>([]);
 
     const filteredExchangeRates = computed(() => {
@@ -70,7 +70,6 @@ export const useCurrenciesStore = defineStore(
         .then((response) => response.json())
         .then((data) => {
           setExchangeRates(Object.values(data.Valute));
-          setCurrencyVariants(Object.keys(data.Valute));
         })
         .catch((error) => {
           console.error(error.response);
@@ -85,6 +84,7 @@ export const useCurrenciesStore = defineStore(
           fx.rates = variants;
           fx.base = data.base;
           setCurrentCurrency(data.base);
+          setCurrencyVariants(Object.keys(variants));
         })
         .catch((error) => {
           console.error(error.response);

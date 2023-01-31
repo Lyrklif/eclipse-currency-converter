@@ -2,11 +2,11 @@
 import { useConverterStore } from "../stores/converter";
 import { useCurrenciesStore } from "../stores/currencies";
 import BaseSelect from "../components/features/BaseSelect.vue";
-import { ref } from "vue";
+import { storeToRefs } from "pinia";
 
 const convertStore = useConverterStore();
 const currenciesStore = useCurrenciesStore();
-const value = ref(convertStore.baseValue);
+const { baseValue } = storeToRefs(convertStore);
 
 const changeValue = (e: any) => {
   convertStore.setBaseValue(e.target.value);
@@ -18,7 +18,7 @@ const changeValue = (e: any) => {
     <input
       type="number"
       inputmode="numeric"
-      v-model.number="value"
+      v-model.number="baseValue"
       @input="changeValue"
       min="0"
     />

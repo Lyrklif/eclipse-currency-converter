@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const emit = defineEmits(["change"]);
-const selected = ref<string>("");
 
-defineProps({
+const props = defineProps({
   value: { type: String as PropType<string>, required: true },
   options: { type: Array as PropType<Array<string>>, required: true },
 });
+
+const selected = ref<string>(props.value);
+
+watch(
+  () => props.value,
+  () => {
+    selected.value = props.value;
+  }
+);
 
 const changeHandler = (e: any) => {
   emit("change", e.target.value);

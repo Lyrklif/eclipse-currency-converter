@@ -8,6 +8,8 @@ const START_VALUE = 0;
 export interface StoreInterface {
   baseValue: RemovableRef<number>;
   calculateValue: RemovableRef<number>;
+  from: RemovableRef<string>;
+  to: RemovableRef<string>;
   setBaseValue: (value: number) => void;
   switchCurrencies: () => void;
   setFrom: (value: string) => void;
@@ -22,6 +24,7 @@ export const useConverterStore = defineStore(
     const to = ref<string>("USD");
 
     const calculateValue = computed(() => {
+      if (!baseValue.value) return 0;
       return fx(baseValue.value).from(from.value).to(to.value);
     });
 
@@ -34,7 +37,7 @@ export const useConverterStore = defineStore(
     }
 
     function setBaseValue(value: number) {
-      baseValue.value = value || 0;
+      baseValue.value = value;
     }
     function setFrom(currencyName: string) {
       from.value = currencyName;
@@ -46,6 +49,8 @@ export const useConverterStore = defineStore(
     return {
       baseValue,
       calculateValue,
+      from,
+      to,
       setBaseValue,
       switchCurrencies,
       setFrom,
