@@ -6,11 +6,9 @@
 
 
 ## Описание задания
-Используя Vue js + State Manager (на ваш выбор) сделать мини-приложение для просмотра и конвертации валют на основе json данных от ЦБ РФ.
-
-https://www.cbr-xml-daily.ru/
-
-https://www.cbr-xml-daily.ru/daily_json.js
+Используя Vue 3 (composition api) + Pinia сделать мини-приложение для просмотра и конвертации валют на основе JSON данных от ЦБ РФ.  
+https://www.cbr-xml-daily.ru/  
+https://www.cbr-xml-daily.ru/daily_json.js  
 
 В приложении будет две вкладки
 1. Список валют
