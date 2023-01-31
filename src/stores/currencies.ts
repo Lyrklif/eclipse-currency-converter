@@ -4,6 +4,7 @@ import { ref, computed } from "vue";
 import fx from "money";
 import API from "../api/index";
 import type { ExchangeInterface } from "../api/types";
+import { useSearchStore } from "./search";
 
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
@@ -15,21 +16,18 @@ export interface StoreInterface {
   setExchangeRates: (list: Array<ExchangeInterface>) => void;
   loadCurrencies: () => Promise<void>;
   loadRates: () => Promise<void>;
-  searchName: RemovableRef<string>;
-  setSearchName: (value: string) => void;
-  resetSearchName: () => void;
 }
 
 export const useCurrenciesStore = defineStore(
   "currencies",
   (): StoreInterface => {
     const currentCurrency = ref("");
-    const searchName = ref("");
     const currencyList = ref<Array<string>>([]);
     const exchangeRates = ref<Array<ExchangeInterface>>([]);
+    const searchStore = useSearchStore();
 
     const filteredExchangeRates = computed(() => {
-      const name = searchName.value.toLowerCase();
+      const name = searchStore.searchName.toLowerCase();
 
       return exchangeRates.value.filter((item) => {
         return (
@@ -38,13 +36,6 @@ export const useCurrenciesStore = defineStore(
         );
       });
     });
-
-    function setSearchName(value: string): void {
-      searchName.value = value;
-    }
-    function resetSearchName(): void {
-      searchName.value = "";
-    }
 
     function setCurrencyVariants(list: Array<string> = []): void {
       currencyList.value = list;
@@ -96,14 +87,11 @@ export const useCurrenciesStore = defineStore(
       currencyList,
       exchangeRates,
       filteredExchangeRates,
-      searchName,
       setCurrencyVariants,
       setExchangeRates,
       setCurrentCurrency,
       loadCurrencies,
       loadRates,
-      setSearchName,
-      resetSearchName,
     };
   }
 );

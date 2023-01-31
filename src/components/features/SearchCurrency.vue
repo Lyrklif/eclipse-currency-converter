@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useCurrenciesStore } from "../../stores/currencies";
+import { useSearchStore } from "../../stores/search";
 import BaseInput from "../base/BaseInput.vue";
 import { storeToRefs } from "pinia";
 
-const store = useCurrenciesStore();
+const store = useSearchStore();
 const { searchName } = storeToRefs(store);
 
 const changeHandler = (value: string): void => {
