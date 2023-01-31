@@ -21,10 +21,25 @@ export const useExchangesStore = defineStore(
     const exchangeRates = ref<Array<ExchangeInterface>>([]);
     const searchStore = useSearchStore();
 
+    const convertedExchanges = computed(() => {
+      if (currentCurrency.value === BASE_CURRENCY) {
+        return exchangeRates.value;
+      }
+
+      return exchangeRates.value.map((item) => {
+        const currency = currentCurrency.value;
+        return {
+          ...item,
+          Value: fx(item.Value).from(BASE_CURRENCY).to(currency),
+          Previous: fx(item.Previous).from(BASE_CURRENCY).to(currency),
+        };
+      });
+    });
+
     const filteredExchanges = computed(() => {
       const name = searchStore.searchName.toLowerCase();
 
-      return exchangeRates.value.filter((item) => {
+      return convertedExchanges.value.filter((item) => {
         return (
           item.CharCode.toLowerCase().includes(name) ||
           item.Name.toLowerCase().includes(name)
@@ -33,16 +48,7 @@ export const useExchangesStore = defineStore(
     });
 
     function setCurrentCurrency(currency: string): void {
-      const oldCurrency = currentCurrency.value;
       currentCurrency.value = currency;
-
-      exchangeRates.value.forEach((item) => {
-        const value = item.Value;
-        const previous = item.Previous;
-
-        item.Value = fx(value).from(oldCurrency).to(currency);
-        item.Previous = fx(previous).from(oldCurrency).to(currency);
-      });
     }
 
     async function loadExchanges() {
