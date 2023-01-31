@@ -539,6 +539,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.11.tgz#d421b6c527a3037f7c84433fd2c4229e016863d3"
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
+"@types/money@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@types/money/-/money-0.2.0.tgz#68a87f11d16f2201ed6212c7b346d8f56ec3a0b5"
+  integrity sha512-K5C16YIGwCmoHRWZxo3mywD31Vmm1MyQBAlMskbevb26r/XSwOdWS4JMowzdtOD3Hlu9fbCIT3c0KMach/SqRg==
+
 "@types/node@*", "@types/node@^18.11.12":
   version "18.11.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.18.tgz#8dfb97f0da23c2293e554c5a50d61ef134d7697f"
@@ -2708,6 +2713,11 @@ minimatch@^5.0.1, minimatch@^5.1.1:
   integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
   dependencies:
     brace-expansion "^2.0.1"
+
+money@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/money/-/money-0.2.0.tgz#7eada2df1009df935fa18d4fb1d620ddacce02c2"
+  integrity sha512-0AblpmOvf7yXW9Or4iBHvms38blV74pwjF/G3qI2PDbcAowQEYgEJPqvnuGBYTuWXtZQSrN5g49RqyezdKhwGg==
 
 ms@2.1.2:
   version "2.1.2"

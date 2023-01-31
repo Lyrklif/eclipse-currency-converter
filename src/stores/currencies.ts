@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import type { RemovableRef } from "@vueuse/core";
 import { ref, computed } from "vue";
+import fx from "money";
 
 export interface StoreInterface {
   currentCurrency: RemovableRef<string>;
@@ -59,10 +60,8 @@ export const useCurrenciesStore = defineStore(
         const value = item.Value;
         const previous = item.Previous;
 
-        // @ts-ignore
-        item.Value = window.fx(value).from(oldCurrency).to(currency);
-        // @ts-ignore
-        item.Previous = window.fx(previous).from(oldCurrency).to(currency);
+        item.Value = fx(value).from(oldCurrency).to(currency);
+        item.Previous = fx(previous).from(oldCurrency).to(currency);
       });
     }
 
@@ -82,10 +81,9 @@ export const useCurrenciesStore = defineStore(
       fetch("https://www.cbr-xml-daily.ru/latest.js")
         .then((response) => response.json())
         .then((data) => {
-          // @ts-ignore
-          window.fx.rates = data.rates;
-          // @ts-ignore
-          window.fx.base = data.base;
+          const variants = { ...data.rates, [data.base]: 1 };
+          fx.rates = variants;
+          fx.base = data.base;
           setCurrentCurrency(data.base);
         })
         .catch((error) => {

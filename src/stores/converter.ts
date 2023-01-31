@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import type { RemovableRef } from "@vueuse/core";
 import { ref, computed } from "vue";
+import fx from "money";
 
 const START_VALUE = 0;
 
@@ -21,8 +22,7 @@ export const useConverterStore = defineStore(
     const to = ref<string>("USD");
 
     const calculateValue = computed(() => {
-      // @ts-ignore
-      return window.fx(baseValue.value).from(from.value).to(to.value);
+      return fx(baseValue.value).from(from.value).to(to.value);
     });
 
     function switchCurrencies() {
