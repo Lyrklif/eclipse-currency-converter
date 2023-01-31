@@ -5,9 +5,9 @@ import ExchangeRates from "../components/features/ExchangeRates.vue";
 </script>
 
 <template>
-  <div>
+  <main>
     <CurrencyChanger />
     <SearchCurrency />
     <ExchangeRates />
-  </div>
+  </main>
 </template>
