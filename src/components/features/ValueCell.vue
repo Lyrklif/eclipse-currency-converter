@@ -23,7 +23,7 @@ const isLow = computed(() => {
         high: isHigh,
         low: isLow,
       }"
-      >{{ isHigh ? "▼" : isLow ? "▲" : "" }} {{ current }}</b
+      >{{ isHigh ? "▼" : isLow ? "▲" : "" }} {{ $filters.number(current) }}</b
     >
     <small class="price">
       {{ isHigh ? "-" : isLow ? "+" : "" }}

@@ -6,23 +6,50 @@ const store = useCurrenciesStore();
 </script>
 
 <template>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th>CharCode</th>
-        <th>Nominal</th>
-        <th>Name</th>
-        <th>Value</th>
+        <th>Код</th>
+        <th class="price">Цена ({{ store.currentCurrency }})</th>
+        <th>Номинал</th>
+        <th>Название</th>
       </tr>
     </thead>
 
     <tbody>
-      <tr v-for="(value, key) in store.exchangeRates" :key="key">
-        <td>{{ value.CharCode }}</td>
-        <td>{{ value.Nominal }}</td>
-        <td>{{ value.Name }}</td>
-        <ValueCell :current="value.Value" :previous="value.Previous" />
+      <tr v-for="(value, key) in store.exchangeRates" :key="key" class="row">
+        <td class="cell">
+          <b>{{ value.CharCode }}</b>
+        </td>
+        <ValueCell
+          :current="value.Value"
+          :previous="value.Previous"
+          class="cell price"
+        />
+        <td class="cell nominal">{{ value.Nominal }}</td>
+        <td class="cell">{{ value.Name }}</td>
       </tr>
     </tbody>
   </table>
 </template>
+
+<style>
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.row {
+  border-top: 1px solid lightgray;
+}
+.cell {
+  padding: 0.5rem 0.2rem;
+}
+
+.nominal {
+  text-align: center;
+}
+
+.price {
+  text-align: right;
+}
+</style>
