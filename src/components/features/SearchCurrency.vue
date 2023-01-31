@@ -12,10 +12,20 @@ const changeHandler = (value: string): void => {
 </script>
 
 <template>
-  <BaseInput
-    @input="changeHandler"
-    :value="searchName"
-    placeholder="Поиск валюты"
-    type="search"
-  />
+  <form @submit.prevent="changeHandler(searchName)">
+    <BaseInput
+      @input="changeHandler"
+      :value="searchName"
+      placeholder="Поиск валюты"
+      type="search"
+      class="input"
+    />
+  </form>
 </template>
+
+<style scoped lang="scss">
+.input {
+  width: 100%;
+  max-width: 100%;
+}
+</style>
