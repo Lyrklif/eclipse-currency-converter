@@ -15,7 +15,7 @@ import AppFooter from "./components/layout/AppFooter.vue";
 <style scoped lang="scss">
 .wrap {
   width: 100%;
-  max-width: max(80vw, 300px);
+  max-width: max(80vw, 320px);
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -29,6 +29,8 @@ import AppFooter from "./components/layout/AppFooter.vue";
 
 .content {
   margin-bottom: 3rem;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .app-footer {
