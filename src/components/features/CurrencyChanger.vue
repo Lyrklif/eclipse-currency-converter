@@ -11,16 +11,13 @@ const changeHandler = (): void => {
 </script>
 
 <template>
-  <div>
-    currency: {{ currency }}
-    <select v-model="currency" @change="changeHandler">
-      <option
-        v-for="name in store.currencyList"
-        :key="`currency-${name}`"
-        :value="name"
-      >
-        {{ name }}
-      </option>
-    </select>
-  </div>
+  <select v-model="currency" @change="changeHandler">
+    <option
+      v-for="name in store.currencyList"
+      :key="`currency-${name}`"
+      :value="name"
+    >
+      {{ name }}
+    </option>
+  </select>
 </template>
