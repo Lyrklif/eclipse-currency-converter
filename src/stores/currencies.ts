@@ -1,10 +1,13 @@
 import { defineStore } from "pinia";
 import type { RemovableRef } from "@vueuse/core";
 import { ref } from "vue";
+import { useStorage } from "@vueuse/core";
 
 export interface StoreInterface {
+  currentCurrency: RemovableRef<string>;
   currencyList: RemovableRef<Array<any>>;
   exchangeRates: RemovableRef<Array<string>>;
+  setCurrentCurrency: (value: string) => void;
   setCurrencyVariants: (list: Array<string>) => void;
   setExchangeRates: (list: Array<any>) => void;
   loadCurrencies: () => Promise<void>;
@@ -13,6 +16,7 @@ export interface StoreInterface {
 export const useCurrenciesStore = defineStore(
   "currencies",
   (): StoreInterface => {
+    const currentCurrency = useStorage("currency", "RUB");
     const currencyList = ref<Array<any>>([]);
     const exchangeRates = ref<Array<string>>([]);
 
@@ -22,6 +26,10 @@ export const useCurrenciesStore = defineStore(
 
     function setExchangeRates(list: Array<any> = []): void {
       exchangeRates.value = list;
+    }
+
+    function setCurrentCurrency(value: string): void {
+      currentCurrency.value = value;
     }
 
     async function loadCurrencies(): Promise<void> {
@@ -37,10 +45,12 @@ export const useCurrenciesStore = defineStore(
     }
 
     return {
+      currentCurrency,
       currencyList,
       exchangeRates,
       setCurrencyVariants,
       setExchangeRates,
+      setCurrentCurrency,
       loadCurrencies,
     };
   }
