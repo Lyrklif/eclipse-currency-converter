@@ -5,13 +5,15 @@ import ExchangeRates from "../components/features/rates/ExchangeRates.vue";
 import LoadingAlert from "../components/features/alert/LoadingAlert.vue";
 import FetchAlert from "../components/features/alert/FetchAlert.vue";
 import { useCurrenciesStore } from "../stores/currencies";
+import { useExchangesStore } from "../stores/exchanges";
 import { ref } from "vue";
 
 const store = useCurrenciesStore();
+const exchangesStore = useExchangesStore();
 const isLoading = ref<boolean>(true);
 const isError = ref<boolean>(false);
 
-Promise.all([store.loadCurrencies(), store.loadRates()])
+Promise.all([exchangesStore.loadCurrencies(), store.loadRates()])
   .catch(() => {
     isError.value = true;
   })

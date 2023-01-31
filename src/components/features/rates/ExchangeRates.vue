@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import PriceCell from "./PriceCell.vue";
-import { useCurrenciesStore } from "../../../stores/currencies";
+import { useExchangesStore } from "../../../stores/exchanges";
 
-const store = useCurrenciesStore();
+const store = useExchangesStore();
 </script>
 
 <template>
