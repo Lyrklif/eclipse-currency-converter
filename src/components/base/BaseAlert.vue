@@ -24,13 +24,13 @@ defineProps({
 <style scoped lang="scss">
 .alert {
   padding: 1rem 0.5rem;
-  border-radius: 1rem;
   border-style: solid;
   border-width: 1px;
+  font-weight: bold;
 
   &.info {
-    color: cornflowerblue;
-    border-color: cornflowerblue;
+    color: currentColor;
+    border-color: currentColor;
   }
 
   &.error {
