@@ -4,6 +4,7 @@ import App from "./App.vue";
 import router from "./router";
 import filters from "./helpers/filters";
 import "normalize.css";
+import "./assets/base.scss";
 
 const app = createApp(App);
 

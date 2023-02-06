@@ -53,7 +53,7 @@ const store = useExchangesStore();
 .head-cell {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: beige;
+  background-color: darkgray;
 }
 
 .row {

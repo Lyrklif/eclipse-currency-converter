@@ -19,7 +19,7 @@
 .header {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: darkslategrey;
+  background-color: grey;
 }
 
 .list {
@@ -35,7 +35,7 @@
   text-decoration: none;
   margin-left: 1rem;
   margin-right: 1rem;
-  color: darkgray;
+  color: lightgray;
   font-weight: bold;
 
   &.router-link-active {
