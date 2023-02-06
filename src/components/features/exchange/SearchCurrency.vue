@@ -17,7 +17,7 @@ const changeHandler = (value: string): void => {
       @input="changeHandler"
       :value="searchName"
       placeholder="Поиск валюты"
-      type="search"
+      type="text"
       class="input"
     />
   </form>
