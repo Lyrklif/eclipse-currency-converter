@@ -20,16 +20,15 @@ export const useCurrenciesStore = defineStore(
     }
 
     async function loadRates() {
-      API.rates()
-        .then((res) => {
-          const variants = { ...res.data.rates, [res.data.base]: 1 };
-          fx.rates = variants;
-          fx.base = res.data.base;
-          setCurrencyKeys(Object.keys(variants));
-        })
-        .catch((error) => {
-          console.error(error.response);
-        });
+      try {
+        const res = await API.rates();
+        const variants = { ...res.data.rates, [res.data.base]: 1 };
+        fx.rates = variants;
+        fx.base = res.data.base;
+        setCurrencyKeys(Object.keys(variants));
+      } catch (e: any) {
+        console.error(e.response);
+      }
     }
 
     return {

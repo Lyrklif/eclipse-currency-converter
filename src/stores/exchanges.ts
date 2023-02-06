@@ -52,13 +52,12 @@ export const useExchangesStore = defineStore(
     }
 
     async function loadExchanges() {
-      API.exchanges()
-        .then((data) => {
-          exchangeRates.value = Object.values(data.data.Valute);
-        })
-        .catch((error) => {
-          console.error(error.response);
-        });
+      try {
+        const res = await API.exchanges();
+        exchangeRates.value = Object.values(res.data.Valute);
+      } catch (e: any) {
+        console.error(e.response);
+      }
     }
 
     return {
