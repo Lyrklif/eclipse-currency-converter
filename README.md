@@ -1,8 +1,9 @@
 # eclipse-currency-converter
-Время на выполнение: ~12ч с учётом перерывов  
-Запускал с node версией 14.20.0  
-Стек: Vue3 (Composition API), Pinia, Typescript, Axios   
-Вместо WebPack используется Vite   
+**Кратко**: мини-приложение для просмотра и конвертации валют на основе JSON данных от ЦБ РФ  
+Используются базовые стили и шрифт  
+Запускал с node версией **14.20.0**  
+**Стек**: Vue3 (Composition API), Pinia, Typescript, Axios   
+Вместо WebPack используется *Vite*   
 
 
 ## Описание задания
