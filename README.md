@@ -1,4 +1,6 @@
 # eclipse-currency-converter
+https://lyrklif.github.io/eclipse-currency-converter  
+  
 **Кратко**: мини-приложение для просмотра и конвертации валют на основе JSON данных от ЦБ РФ  
 Используются базовые стили и шрифт  
 Запускал с node версией **14.20.0**  
