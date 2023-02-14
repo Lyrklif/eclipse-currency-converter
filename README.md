@@ -8,6 +8,11 @@ https://lyrklif.github.io/eclipse-currency-converter
 Вместо WebPack используется *Vite*   
 
 
+
+Список валют               |  Конвертер
+:-------------------------:|:-------------------------:
+![1](https://user-images.githubusercontent.com/41914434/218874361-8aa9d47a-53d5-4444-8810-c8e4fe3106a6.png)  |  ![2](https://user-images.githubusercontent.com/41914434/218874367-5bf6fbf7-6445-4816-b675-ac69083ae860.png)
+
 ## Описание задания
 Используя Vue 3 (composition api) + Pinia сделать мини-приложение для просмотра и конвертации валют на основе JSON данных от ЦБ РФ.  
 https://www.cbr-xml-daily.ru/  
