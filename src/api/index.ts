@@ -11,7 +11,7 @@ const instance: AxiosInstance = axios.create({
   baseURL: "https://www.cbr-xml-daily.ru/",
 });
 
-const API: ApiInterface = {
+const apiClient: ApiInterface = {
   exchanges() {
     return instance.get("daily_json.js");
   },
@@ -20,4 +20,4 @@ const API: ApiInterface = {
   },
 };
 
-export default API;
+export default apiClient;
