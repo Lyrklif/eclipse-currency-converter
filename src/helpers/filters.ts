@@ -1,18 +1,19 @@
-
-interface MixinsInterface {
+type TMixins = {
   number: (value: number, decimalPlaces?: number) => string | number;
 }
 
-const filters: MixinsInterface = {
+const filters: TMixins = {
   number(value, decimalPlaces = 4) {
     if (!value) return value;
 
-    return value.toLocaleString(undefined, {
+    const options = {
       minimumFractionDigits: 0,
       maximumFractionDigits: decimalPlaces,
-    });
+    };
+
+    return value.toLocaleString(undefined, options);
   },
 };
 
 export default filters;
-export type { MixinsInterface };
+export type { TMixins };

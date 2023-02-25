@@ -11,12 +11,12 @@ export interface StoreInterface {
 export const useSearchStore = defineStore("search", (): StoreInterface => {
   const searchName = ref("");
 
-  function setSearchName(value: string): void {
+  const setSearchName = (value: string): void => {
     searchName.value = value;
-  }
-  function resetSearchName(): void {
+  };
+  const resetSearchName = (): void => {
     searchName.value = "";
-  }
+  };
 
   return {
     searchName,

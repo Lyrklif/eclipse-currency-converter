@@ -15,11 +15,11 @@ export const useCurrenciesStore = defineStore(
   (): StoreInterface => {
     const currencyKeys = ref<Array<string>>([]);
 
-    function setCurrencyKeys(list: Array<string> = []): void {
+    const setCurrencyKeys = (list: Array<string> = []): void => {
       currencyKeys.value = list;
-    }
+    };
 
-    async function loadRates() {
+    const loadRates = async (): Promise<void> => {
       try {
         const res = await API.rates();
         const variants = { ...res.data.rates, [res.data.base]: 1 };
@@ -29,7 +29,7 @@ export const useCurrenciesStore = defineStore(
       } catch (e: any) {
         console.error(e.response);
       }
-    }
+    };
 
     return {
       currencyKeys,
